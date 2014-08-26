@@ -1,0 +1,20 @@
+<wap-provisioningdoc>
+  <characteristic type="EMAIL2" recursive="true">
+    <characteristic type="{DFCD740C-C3BE-47A1-B839-DA3D6A11F2D6}">
+      <parm name="SERVICENAME" value="Hotmail" />
+      <parm name="SERVICETYPE" value="Hotmail" />
+      <parm name="INSERVER" value="mobile.msn.com" />
+      <parm name="AUTHNAME" value="user" />
+      <parm name="OUTSERVER" value="mobile.msn.com" />
+      <parm name="REPLYADDR" value="logimat2012@live.com" />
+      <parm name="ACCOUNTICON" value="WLMMailTransport.dll,100" />
+      <parm name="NAME" value="" />
+      <parm name="LINGER" value="0" />
+      <parm name="RETRIEVE" value="2048" />
+      <parm name="KEEPMAX" value="0" />
+      <parm name="DWNDAY" value="3" />
+      <parm name="FORMAT" value="2" />
+      <parm name="AUTHREQUIRED" value="0" />
+    </characteristic>
+  </characteristic>
+</wap-provisioningdoc>

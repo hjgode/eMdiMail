@@ -1,0 +1,18 @@
+intermecsettings.exe /P\Windows\itcReaderDataModel.xml /ip=127.0.0.1 "/kCommunications\802.11 Radio"
+
+- <Subsystem Name="Data Collection">
+- <Group Name="Scanners" Instance="18">
+- <Group Name="Imager Settings">
+- <Group Name="Document Imaging">
+  <Field Name="Enable Document Imaging">0</Field> 
+  </Group>
+  </Group>
+  </Group>
+  </Subsystem>
+
+//FAILS:
+\windows\intermecsettings.exe /P\Windows\itcReaderDataModel.xml /ip=127.0.0.1 "/k Data Collection\Scanners\Imager Settings\Document Imaging"
+
+//OK:
+\windows\intermecsettings.exe /P\Windows\itcReaderDataModel.xml /ip=127.0.0.1 "/kData Collection\Scanners"
+

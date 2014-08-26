@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--                       -->
+<!-- Scanners Symbologies -->
+<!--                       -->
+<Subsystem Name="Data Collection" Version="2.0" BuildAhead="true">
+	<!--                  -->
+	<!-- Internal Scanner -->
+	<!--                  -->
+	<Group Name="Scanners" File="InternalScannerSchema.xml"/> <!-- Name attribute will override name attribute in <Subsystem> tag in subschema -->
+	<!--                  -->
+	<!-- Tethered Scanner -->
+	<!--                  -->
+	<Group Name="Scanners" File="TetheredScannerSchema.xml"/> <!-- Name attribute will override name attribute in <Subsystem> tag in subschema -->
+	<!--                       -->
+	<!-- Dock Tethered Scanner -->
+	<!--                       -->
+	<Group Name="Scanners" File="DockTetheredScannerSchema.xml"/> <!-- Name attribute will override name attribute in <Subsystem> tag in subschema -->
+    <!--                       -->
+    <!-- Camera                -->
+    <!--                       -->
+    <Group Name="Scanners" File="CameraDataModel.xml"/>
+    <Field Name="Scanner Push Pull" Required="false" Type="Integer" Default="0"  >
+        <Depends Default="Show">
+            <DependsField Name="\Global\Model" Value="CN50?" Display="Hide"/>
+        </Depends>
+        <Depends Default="Show">
+			<DependsField Name="..\Scanner Push Pull" Value="" Display="Hide"/>
+		</Depends>
+		<Enumeration Value="Overwrite with computer settings" Position="0"  />
+		<Enumeration Value="Keep scanner settings" Position="1"  />
+	</Field>
+	<!--                    -->
+	<!-- Bluetooth Scanners -->
+	<!--                    -->
+	<Group Name="Bluetooth Scanners" File="BluetoothScannerSchema.xml"/> <!-- Name attribute will override name attribute in <Subsystem> tag in subschema -->
+    <!--                    -->
+	<!-- USB Scanners -->
+	<!--                    -->
+	<Group Name="USB Scanners" File="USBScannerDataModel.xml"/> <!-- Name attribute will override name attribute in <Subsystem> tag in subschema -->
+	<!--                  -->
+	<!-- Magstripe Reader -->
+	<!--                  -->
+	<Group Name="Magstripe Reader">
+        <Depends Default="Show">
+            <DependsField Name="\Global\Model" Value="CS40?" Display="Hide" />
+        </Depends>
+        <Depends Default="Hide">
+			<DependsField Name="Enable Magstripe Reader" Value="0" Display="Show"/>
+			<Or/>
+			<DependsField Name="Enable Magstripe Reader" Value="1" Display="Show"/>
+		</Depends>
+	    <Field Name="Auto Enable" Type="String" Hidden="true"/>
+	    <Field Name="Enable Magstripe Reader" Required="false" Type="Boolean" Default="0">
+            <!--		    <Depends Default="Refresh">
+				<DependsField Name="." Display="Refresh" Target=".."/>
+		    </Depends>
+			<Depends Default="Show">
+				<DependsField Name="..\Auto Enable" Value="True" Display="Gray"/>
+			</Depends> -->
+        </Field>
+        <Field Name="Reader Model" Required="false" Type="String" Editable="false">
+            <!--		    <Depends Default="Refresh">
+			    <DependsField Name="." Display="Refresh" Target=".."/>
+		    </Depends> -->
+	        <Enumeration Value="MSR3410" Position="MSR3410"/>
+		</Field>
+	</Group>
+</Subsystem>

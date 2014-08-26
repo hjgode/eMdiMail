@@ -1,0 +1,3050 @@
+<?xml version="1.0"?>
+<!--        -->
+<!-- Camera -->
+<!--        -->
+<Group Name="Scanners" Instance="18" Version="2.0">
+    <Field Name="Enable scanner port" Required="false" Type="Boolean" Editable="false" />
+    <!--             -->
+    <!-- Symbologies -->
+    <!--             -->
+    <Group Name="Symbologies" BuildAhead="true">
+        <!--          -->
+        <!-- Code 128 -->
+        <!--          -->
+        <Group Name="Code 128">
+            <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\Code 128 -->
+            <Field Name="Enable Code 128" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="EAN 128" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="ISBT 128" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="67" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Code 128" Value="0" Display="Gray"/>
+                    <And/>
+                    <DependsField Name="..\EAN 128" Value="0" Display="Gray"/>
+                    <And/>
+                    <DependsField Name="..\ISBT 128" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="EAN 128 identifier" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Unconventional GS1-128" Required="false" Type="Integer" Default="1" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"/>
+                    <Enumeration Value="Enable" Position="1"/>
+                </Field>
+                <Field Name="ISBT concatenation xmit" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Concatenated codes" Position="1"  />
+                    <Enumeration Value="Concat. or single codes" Position="2"  />
+                </Field>
+                <Field Name="Concatenate ISBT codes" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Check digit verify" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="French CIP" Position="1"  />
+                </Field>
+                <Field Name="Reading range" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Normal" Position="0"  />
+                    <Enumeration Value="Extended" Position="1"  />
+                </Field>
+                <Field Name="Reading tolerance" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="High" Position="0"  />
+                    <Enumeration Value="Medium" Position="1"  />
+                    <Enumeration Value="Low" Position="2"  />
+                </Field>
+                <Field Name="GTIN compliant" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Code 128 User def sym ID" Required="false" Type="String" Default="B3"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code 128 code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="EAN 128 User def sym ID" Required="false" Type="String" Default="C9"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="GS1-128 code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="FNC1 conversion" Required="false" Type="String" Default="\x1D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Code 128 -->
+        <!--         -->
+        <!-- Code 39 -->
+        <!--         -->
+        <Group Name="Code 39">
+            <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\Code 39 -->
+            <Depends Default="Show">
+                <DependsField Name="Enable Code 39" Display="Hide" Value="N"/>
+            </Depends>
+            <Field Name="Enable Code 39" Required="false" Type="Boolean" Default="1">
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\Code 39\Options -->
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="66" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Code 39" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Full ASCII Conversion" Required="false" Type="Integer" Default="0">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"/>
+                    <Enumeration Value="Enable" Position="1"/>
+                </Field>
+                <Field Name="Start/Stop transmission" Required="false" Type="Boolean" Default="0">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Start character" Required="false" Type="Integer" Default="2"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="$ only" Position="1"  />
+                    <Enumeration Value="* only" Position="2"  />
+                    <Enumeration Value="$ and *" Position="3"  />
+                </Field>
+                <Field Name="Verify check digit" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Modulo 43" Position="1"  />
+                    <Enumeration Value="French CIP" Position="2"  />
+                    <Enumeration Value="Italian CPI" Position="3"  />
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Reading range" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Normal" Position="0"  />
+                    <Enumeration Value="Extended" Position="1"  />
+                </Field>
+                <Field Name="Reading tolerance" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="High" Position="0"  />
+                    <Enumeration Value="Medium" Position="1"  />
+                    <Enumeration Value="Low" Position="2"  />
+                </Field>
+                <Field Name="Unconventional Code 39" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"/>
+                    <Enumeration Value="Enable" Position="1"/>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+            <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\Code 39\Options -->
+            <Group Name="Trioptic">
+                <Depends Default="Show">
+                    <DependsField Name="Enable Trioptic" Display="Hide" Value="N"/>
+                </Depends>
+                <Field Name="Enable Trioptic" Required="false" Type="Boolean" Default="1">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+            </Group>
+        </Group>
+        <!-- Code 39 -->
+        <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\Code 39 -->
+        <!--            -->
+        <!-- DataMatrix -->
+        <!--            -->
+        <Group Name="DataMatrix">
+            <Depends Default="Show">
+                <DependsField Name="Enable DataMatrix" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable DataMatrix" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="84" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable DataMatrix" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Mirrored labels" Required="false" Type="Integer" Default="0">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"/>
+                    <Enumeration Value="Enable" Position="1"/>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="D0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- DataMatrix -->
+        <!--         -->
+        <!-- UPC/EAN -->
+        <!--         -->
+        <Group Name="UPC/EAN">
+            <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\UPC/EAN -->
+            <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="75" />
+            <Field Name="Enable UPC A" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Enable UPC E" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Enable EAN 8" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Enable EAN 13" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Enable UPC-E1" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Add-on digits" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Transmit if found" Position="0"  />
+                <Enumeration Value="Controlled by add-on digits" Position="1"  />
+            </Field>
+            <Field Name="Add-on 2 digits active" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Add-on 5 digits active" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Add-on security" Required="false" Type="Integer" Default="10"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="0" Max="100" />
+            </Field>
+            <Field Name="UPC A check digit" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC E check digit" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="EAN 8 check digit" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="EAN 13 check digit" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC A number sys" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC E number sys" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC A xmit as EAN 13" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC E xmit as UPC A" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="EAN 8 xmit as EAN 13" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="ISBN conversion for EAN 13" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="ISMN conversion for EAN 13" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="ISSN conversion for EAN 13" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="GTIN compliant" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC A user defined sym ID" Required="false" Type="String" Default="A0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="UPC A code mark" Required="false" Type="String" Default="A"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="UPC E user defined sym ID" Required="false" Type="String" Default="E0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="UPC E code mark" Required="false" Type="String" Default="E"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="EAN 8 user defined sym ID" Required="false" Type="String" Default="FF"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="EAN 8 code mark" Required="false" Type="String" Default="N"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="EAN 13 user defined sym ID" Required="false" Type="String" Default="F"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="EAN 13 code mark" Required="false" Type="String" Default="F"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+        </Group>
+        <!-- UPC/EAN -->
+        <!-- \Scanners, Symbologies\Internal Scanner\Symbologies\UPC/EAN -->
+        <!--             -->
+        <!-- AustraliaPost -->
+        <!--             -->
+        <Group Name="AustraliaPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable AustraliaPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable AustraliaPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="52" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable AustraliaPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P3"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- AustraliaPost -->
+        <!--       -->
+        <!-- Aztec -->
+        <!--       -->
+        <Group Name="Aztec">
+            <Depends Default="Show">
+                <DependsField Name="Enable Aztec" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Aztec" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="83" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Aztec" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Structured Append Mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="Runes" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="EAN128 Emulation" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="D3"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Aztec -->
+        <!--     -->
+        <!-- BPO -->
+        <!--     -->
+        <Group Name="BPO">
+            <Depends Default="Show">
+                <DependsField Name="Enable BPO" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable BPO" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="50" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable BPO" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P2"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- BPO -->
+        <!--             -->
+        <!-- CanadaPost -->
+        <!--             -->
+        <Group Name="CanadaPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable CanadaPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable CanadaPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="51" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable CanadaPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- CanadaPost -->
+        <!--         -->
+        <!-- Codabar -->
+        <!--         -->
+        <Group Name="Codabar">
+            <Depends Default="Show">
+                <DependsField Name="Enable Codabar" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Codabar" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="64" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Codabar" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Start/Stop transmit" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="a,b,c,d " Position="1"  />
+                    <Enumeration Value="A,B,C,D" Position="2"  />
+                    <Enumeration Value="a,b,c,d/t,n,*,e" Position="3"  />
+                    <Enumeration Value="DC1,DC2,DC3,DC4" Position="4"  />
+                </Field>
+                <Field Name="CLSI library system" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Verify check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Concatenation" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Transmit concat only" Position="1"  />
+                    <Enumeration Value="Transmit concat or single" Position="2"  />
+                </Field>
+                <Field Name="Concatenation mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="No restriction" Position="0"  />
+                    <Enumeration Value="2nd code = 1st code start" Position="1"  />
+                    <Enumeration Value="ABC" Position="2"  />
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B7"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Codabar -->
+        <!--             -->
+        <!-- Codablock A -->
+        <!--             -->
+        <Group Name="Codablock A">
+            <Depends Default="Show">
+                <DependsField Name="Enable Codablock A" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Codablock A" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="77" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="77" Target="Restoring defaults to Codablock A also restored defaults to Codablock F" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Codablock A" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="K0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Codablock A -->
+        <!--             -->
+        <!-- Codablock F -->
+        <!--             -->
+        <Group Name="Codablock F">
+            <Depends Default="Show">
+                <DependsField Name="Enable Codablock F" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Codablock F" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="77" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="77" Target="Restoring defaults to Codablock F also restored defaults to Codablock A" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Codablock F" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="K1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Codablock F -->
+        <!--         -->
+        <!-- Code 11 -->
+        <!--         -->
+        <Group Name="Code 11">
+            <Depends Default="Show">
+                <DependsField Name="Enable Code 11" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Code 11" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="74" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Code 11" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Verify check digit" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="1 digit" Position="1"  />
+                    <Enumeration Value="2 digits" Position="2"  />
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Code 11 -->
+        <!--         -->
+        <!-- Code 93 -->
+        <!--         -->
+        <Group Name="Code 93">
+            <Depends Default="Show">
+                <DependsField Name="Enable Code 93" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Code 93" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="65" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Code 93" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="1">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Code 93 -->
+        <!--             -->
+        <!-- DutchPost -->
+        <!--             -->
+        <Group Name="DutchPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable DutchPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable DutchPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="54" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable DutchPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P4"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- DutchPost -->
+        <!--             -->
+        <!-- GS1 Composite (EAN.UCC Composite) -->
+        <!--             -->
+        <Group Name="EAN.UCC Composite">
+            <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="86" />
+            <Field Name="Enable EAN.UCC Composite A/B" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Enable EAN.UCC Composite C" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UCC/EAN-128 Emulation" Required="false" Type="Boolean" Default="0" Editable="false"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Linear only xmit mode" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="UPC/EAN comp msg decode" Required="false" Type="Integer" Default="2"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Never linked" Position="0"  />
+                <Enumeration Value="Always linked" Position="1"  />
+                <Enumeration Value="Auto-discriminate" Position="2"  />
+            </Field>
+            <Field Name="Unconventional GS1 Composite" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Disable" Position="0"/>
+                <Enumeration Value="Enable" Position="1"/>
+            </Field>
+            <Field Name="A/B User defined symbology ID" Required="false" Type="String" Default="G0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="A/B code mark" Required="false" Type="String" Default="*"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="C User defined symbology ID" Required="false" Type="String" Default="G1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="C code mark" Required="false" Type="String" Default="*"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+        </Group>
+        <!-- GS1 Composite (EAN.UCC Composite) -->
+        <!--                                     -->
+        <!-- GS1 DataBar Expanded (RSS Expanded) -->
+        <!--                                     -->
+        <Group Name="RSS Expanded">
+            <Depends Default="Show">
+                <DependsField Name="Enable RSS Expanded" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable RSS Expanded" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="79" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="79" Target="Defaults restored to all GS1 DataBar symbologies" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable RSS Expanded" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C5"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- GS1 DataBar Expanded (RSS Expanded) -->
+        <!--                                   -->
+        <!-- GS1 DataBar Limited (RSS Limited) -->
+        <!--                                   -->
+        <Group Name="RSS Limited">
+            <Depends Default="Show">
+                <DependsField Name="Enable RSS Limited" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable RSS Limited" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="79" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="79" Target="Defaults restored to all GS1 DataBar symbologies" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable RSS Limited" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C4"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- GS1 DataBar Limited (RSS Limited) -->
+        <!--                                       -->
+        <!-- GS1 DataBar Omni-Directional (RSS 14) -->
+        <!--                                       -->
+        <Group Name="RSS 14">
+            <Depends Default="Show">
+                <DependsField Name="Enable RSS 14" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable RSS 14" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="79" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="79" Target="Defaults restored to all GS1 DataBar symbologies" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable RSS 14" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C3"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- GS1 DataBar Omni-Directional (RSS 14) -->
+        <!--          -->
+        <!-- Infomail -->
+        <!--          -->
+        <Group Name="Infomail">
+            <Depends Default="Show">
+                <DependsField Name="Enable Infomail" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Infomail" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="57" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Infomail" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P8"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Infomail -->
+        <!--                  -->
+        <!-- Intelligent Mail -->
+        <!--                  -->
+        <Group Name="Intelligent Mail">
+            <Depends Default="Show">
+                <DependsField Name="Enable Intelligent Mail" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Intelligent Mail" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="58" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Intelligent Mail" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="PA"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Intelligent Mail -->
+        <!--                    -->
+        <!-- Interleaved 2 of 5 -->
+        <!--                    -->
+        <Group Name="Interleaved 2 of 5">
+            <Depends Default="Show">
+                <DependsField Name="Enable I 2 of 5" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable I 2 of 5" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="68" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable I 2 of 5" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Verify check digit" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Modulo 10" Position="1"  />
+                    <Enumeration Value="French CIP" Position="2"  />
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Reading range" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Normal" Position="0"  />
+                    <Enumeration Value="Extended" Position="1"  />
+                </Field>
+                <Field Name="Reading tolerance" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="High" Position="0"  />
+                    <Enumeration Value="Medium" Position="1"  />
+                    <Enumeration Value="Low" Position="2"  />
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B2"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="I"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Interleaved 2 of 5 -->
+        <!--           -->
+        <!-- JapanPost -->
+        <!--           -->
+        <Group Name="JapanPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable JapanPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable JapanPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="53" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable JapanPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P5"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- JapanPost -->
+        <!--            -->
+        <!-- KoreanPost -->
+        <!--            -->
+        <Group Name="KoreanPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable KoreanPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable KoreanPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="56" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable KoreanPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P9"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- KoreanPost -->
+        <!--               -->
+        <!-- Matrix 2 of 5 -->
+        <!--               -->
+        <Group Name="Matrix 2 of 5">
+            <Depends Default="Show">
+                <DependsField Name="Enable Matrix 2 of 5" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Matrix 2 of 5" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="69" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Matrix 2 of 5" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Start/Stop" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Regular" Position="0"  />
+                    <Enumeration Value="ChinaPost" Position="1"  />
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B4"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Matrix 2 of 5 -->
+        <!--          -->
+        <!-- Maxicode -->
+        <!--          -->
+        <Group Name="Maxicode">
+            <Depends Default="Show">
+                <DependsField Name="Enable Maxicode" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Maxicode" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="82" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Maxicode" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Mode 0" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="D2"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Maxicode -->
+        <!--              -->
+        <!-- Micro PDF417 -->
+        <!--              -->
+        <Group Name="Micro PDF417">
+            <Depends Default="Show">
+                <DependsField Name="Enable Micro PDF417" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Micro PDF417" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="76" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="76" Target="Defaults restored to Micro PDF417 and PDF417" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Micro PDF417" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="MicroPDF Code 128 emulation" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C8"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Micro PDF417 -->
+        <!--     -->
+        <!-- MSI -->
+        <!--     -->
+        <Group Name="MSI">
+            <Depends Default="Show">
+                <DependsField Name="Enable MSI" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable MSI" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="70" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable MSI" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Verify check digit" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Modulo 10" Position="1"  />
+                    <Enumeration Value="Double modulo 10" Position="2"  />
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B8"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- MSI -->
+        <!--        -->
+        <!-- PDF417 -->
+        <!--        -->
+        <Group Name="PDF417">
+            <Depends Default="Show">
+                <DependsField Name="Enable PDF417" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable PDF417" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="76" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Message" Value="76" Target="Defaults restored to PDF417 and Micro PDF417" />
+                    </Depends>
+                </Field>
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable PDF417" Value="0" Display="Gray"/>
+                </Depends>
+                <!--              -->
+                <!-- Macro PDF417 -->
+                <!--              -->
+                <Group Name="Macro PDF417">
+                    <Field Name="Control header transmission" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Optional fields file name xmit" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Segment count transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Time stamp transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Sender transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Addressee transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="File size transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                    <Field Name="Checksum transmitted" Required="false" Type="Boolean" Default="0"  >
+                        <Depends Default="Show">
+                            <DependsField Name="." Display="Hide" Value="N"/>
+                        </Depends>
+                    </Field>
+                </Group>
+                <!-- Macro PDF417 -->
+                <Field Name="Irregular PDF" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C7"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- PDF417 -->
+        <!--        -->
+        <!-- Planet -->
+        <!--        -->
+        <Group Name="Planet">
+            <Depends Default="Show">
+                <DependsField Name="Enable Planet" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Planet" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="49" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Planet" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Planet -->
+        <!--         -->
+        <!-- Plessey -->
+        <!--         -->
+        <Group Name="Plessey">
+            <Depends Default="Show">
+                <DependsField Name="Enable Plessey" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Plessey" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="71" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Plessey" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Unconventional stop" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"/>
+                    <Enumeration Value="Enable" Position="1"/>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C2"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Plessey -->
+        <!--         -->
+        <!-- Postnet -->
+        <!--         -->
+        <Group Name="Postnet">
+            <Depends Default="Show">
+                <DependsField Name="Enable Postnet" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Postnet" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="48" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Postnet" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Postnet -->
+        <!--         -->
+        <!-- QR Code -->
+        <!--         -->
+        <Group Name="QR Code">
+            <Depends Default="Show">
+                <DependsField Name="Enable QR Code" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable QR Code" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="85" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable QR Code" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Inverse video" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Normal" Position="0"  />
+                    <Enumeration Value="Inverse" Position="1"  />
+                    <Enumeration Value="Automatic" Position="2"  />
+                </Field>
+                <Field Name="Unconventional QR Code" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="D1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- QR Code -->
+        <!--                               -->
+        <!-- Standard 2 of 5 (Code 2 of 5) -->
+        <!--                               -->
+        <Group Name="Code 2 of 5">
+            <Depends Default="Show">
+                <DependsField Name="Enable Code 2 of 5" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Code 2 of 5" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="72" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Code 2 of 5" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Format" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Identicon, 6 s/s bars" Position="0"  />
+                    <Enumeration Value="Comp Identics, 4 s/s bars" Position="1"  />
+                </Field>
+                <Field Name="Verify check digit" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Modulo 10" Position="1"  />
+                </Field>
+                <Field Name="Transmit check digit" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="B5"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="D"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- Standard 2 of 5 (Code 2 of 5) -->
+        <!--            -->
+        <!-- SwedenPost -->
+        <!--            -->
+        <Group Name="SwedenPost">
+            <Depends Default="Show">
+                <DependsField Name="Enable SwedenPost" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable SwedenPost" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="55" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable SwedenPost" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="P7"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- SwedenPost -->
+        <!--         -->
+        <!-- Telepen -->
+        <!--         -->
+        <Group Name="Telepen">
+            <Depends Default="Show">
+                <DependsField Name="Enable Telepen" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Telepen" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="73" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable Telepen" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Format" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="ASCII" Position="0"  />
+                    <Enumeration Value="Numeric" Position="1"  />
+                </Field>
+                <Field Name="Length mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Length 1 minimum" Position="0"  />
+                    <Enumeration Value="Lengths 1,2,3 fixed" Position="1"  />
+                    <Enumeration Value="Length 1 minimum, length 2 maximum" Position="2"  />
+                </Field>
+                <Field Name="Length 1" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 2" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Length 3" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="0"/>
+                        <DependsField Name="..\Length mode" Display="Gray" Value="2"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="C6"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group> 
+        <!-- Telepen -->
+        <!--             -->
+        <!-- TLC 39 -->
+        <!--             -->
+        <Group Name="TLC 39">
+            <Depends Default="Show">
+                <DependsField Name="Enable TLC 39" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable TLC 39" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Group Name="Options">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="78" />
+                <Depends Default="Show">
+                    <DependsField Name="..\Enable TLC 39" Value="0" Display="Gray"/>
+                </Depends>
+                <Field Name="Linear only xmit mode" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="ECI Security" Required="false" Type="Integer" Default="10"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="100" />
+                </Field>
+                <Field Name="User defined symbology ID" Required="false" Type="String" Default="H0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\x7F"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+        </Group>
+        <!-- TLC 39 -->
+    </Group>
+    <!--                   -->
+    <!-- Symbology Options -->
+    <!--                   -->
+    <Group Name="Symbology Options">
+        <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="96" />
+        <Field Name="Preamble" Required="false" Type="String" Default="-blank-" >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="\xFF"/>
+            </Depends>
+            <Range Min="0" Max="20" />
+        </Field>
+        <Field Name="Postamble" Required="false" Type="String" Default="-blank-" >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="\xFF"/>
+            </Depends>
+            <Range Min="0" Max="20" />
+        </Field>
+        <Field Name="Global symbology ID" Required="false" Type="Integer" Default="0"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Enumeration Value="Disable" Position="0"  />
+            <Enumeration Value="Code mark" Position="1"  />
+            <Enumeration Value="AIM ISO/IEC standard" Position="2"  />
+            <Enumeration Value="User defined" Position="3"  />
+        </Field>
+        <Group Name="Multicode">
+            <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="89" />
+            <Depends Default="Show">
+                <DependsField Name="Enable Multicode" Display="Hide" Value="N" />
+            </Depends>
+            <Field Name="Enable Multicode" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Disable" Position="0"  />
+                <Enumeration Value="Enable" Position="1"  />
+                <Enumeration Value="Exclusive" Position="2"  />
+            </Field>
+            <Field Name="Number of Barcodes" Required="false" Type="Integer" Default="2"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="2" Max="8" />
+            </Field>
+            <Field Name="Barcode Separator" Required="false" Type="String" Default="&lt;&gt;" >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\xFF"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Group Name="User Defined Symbology ID">
+                <Field Name="Complete Multicode" Required="false" Type="String" Default="UDM0">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+                <Field Name="Incomplete Multicode" Required="false" Type="String" Default="UDM1">
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="4" />
+                </Field>
+            </Group>
+            <!-- Symbology Identifier -->
+            <Field Name="Code mark" Required="false" Type="String" Default="*"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="\x7F"/>
+                </Depends>
+                <Range Min="0" Max="4" />
+            </Field>
+            <Field Name="Incomplete Transmission" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Disable" Position="0"  />
+                <Enumeration Value="Enable" Position="1"  />
+            </Field>
+            <Field Name="Incomplete Transmission Timeout" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="0" Max="65535" />
+            </Field>
+            <Group Name="Barcode" MinOccurs="0" MaxOccurs="7" >
+                <Field Name="Symbology" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="All" Position="0"  />
+                    <Enumeration Value="Code 128" Position="23"  />
+                    <Enumeration Value="GS1-128" Position="34"  />
+                    <Enumeration Value="ISBT128" Position="35"  />
+                    <Enumeration Value="Code 39" Position="13"  />
+                    <Enumeration Value="DataMatrix" Position="40"  />
+                    <Enumeration Value="EAN-13" Position="1"  />
+                    <Enumeration Value="EAN-8" Position="2"  />
+                    <Enumeration Value="UPC-A" Position="3"  />
+                    <Enumeration Value="UPC-E" Position="4"  />
+                    <Enumeration Value="EAN-13 Addon 2" Position="5"  />
+                    <Enumeration Value="EAN-8 Addon 2" Position="6"  />
+                    <Enumeration Value="UPC-A Addon 2" Position="7"  />
+                    <Enumeration Value="UPC-E Addon 2" Position="8"  />
+                    <Enumeration Value="EAN-13 Addon 5" Position="9"  />
+                    <Enumeration Value="EAN-8 Addon 5" Position="10"  />
+                    <Enumeration Value="UPC-A Addon 5" Position="11"  />
+                    <Enumeration Value="UPC-E Addon 5" Position="12"  />
+                    <Enumeration Value="EAN-13 Composite (CC-A)" Position="47"  />
+                    <Enumeration Value="EAN-8 Composite (CC-A)" Position="48"  />
+                    <Enumeration Value="UPC-A Composite (CC-A)" Position="49"  />
+                    <Enumeration Value="UPC-E Composite (CC-A)" Position="50"  />
+                    <Enumeration Value="EAN-13 Composite (CC-B)" Position="55"  />
+                    <Enumeration Value="EAN-8 Composite (CC-B)" Position="56"  />
+                    <Enumeration Value="UPC-A Composite (CC-B)" Position="57"  />
+                    <Enumeration Value="UPC-E Composite (CC-B)" Position="58"  />
+                    <Enumeration Value="Australian Post" Position="65"  />
+                    <Enumeration Value="Aztec" Position="74"  />
+                    <Enumeration Value="BPO" Position="63"  />
+                    <Enumeration Value="Canada Post" Position="64"  />
+                    <Enumeration Value="China Post" Position="68"  />
+                    <Enumeration Value="Codabar" Position="19"  />
+                    <Enumeration Value="Codablock A" Position="30"  />
+                    <Enumeration Value="Codablock F" Position="31"  />
+                    <Enumeration Value="Code 11" Position="26"  />
+                    <Enumeration Value="Code 93" Position="25"  />
+                    <Enumeration Value="Dutch Post" Position="67"  />
+                    <Enumeration Value="GS1 Composite/GS1-128 Composite (CC-A)" Position="46"  />
+                    <Enumeration Value="GS1 Composite/GS1-128 Composite (CC-B)" Position="54"  />
+                    <Enumeration Value="GS1 Composite/GS1-128 Composite (CC-C)" Position="59"  />
+                    <Enumeration Value="GS1 DataBar Expanded" Position="39"  />
+                    <Enumeration Value="GS1 DataBar Expanded Composite (CC-A)" Position="45"  />
+                    <Enumeration Value="GS1 DataBar Expanded Composite (CC-B)" Position="53"  />
+                    <Enumeration Value="GS1 DataBar Limited" Position="38"  />
+                    <Enumeration Value="GS1 DataBar Limited Composite (CC-A)" Position="44"  />
+                    <Enumeration Value="GS1 DataBar Limited Composite (CC-B)" Position="52"  />
+                    <Enumeration Value="GS1 DataBar Omni-Directional" Position="37"  />
+                    <Enumeration Value="GS1 DataBar Omni-Dir Composite (CC-A)" Position="43"  />
+                    <Enumeration Value="GS1 DataBar Omni-Dir Composite (CC-B)" Position="51"  />
+                    <Enumeration Value="Infomail" Position="76"  />
+                    <Enumeration Value="Interleaved 2 of 5" Position="15"  />
+                    <Enumeration Value="ISBN" Position="60"  />
+                    <Enumeration Value="ISMN" Position="72"  />
+                    <Enumeration Value="ISSN" Position="73"  />
+                    <Enumeration Value="Japan Post" Position="66"  />
+                    <Enumeration Value="Korean Post" Position="69"  />
+                    <Enumeration Value="Matrix 2 of 5" Position="17"  />
+                    <Enumeration Value="Maxicode" Position="42"  />
+                    <Enumeration Value="Micro PDF" Position="36"  />
+                    <Enumeration Value="MSI" Position="21"  />
+                    <Enumeration Value="PDF417" Position="33"  />
+                    <Enumeration Value="Planet" Position="62"  />
+                    <Enumeration Value="Plessey" Position="22"  />
+                    <Enumeration Value="Postnet" Position="61"  />
+                    <Enumeration Value="QR Code" Position="41"  />
+                    <Enumeration Value="Standard 2 of 5" Position="16"  />
+                    <Enumeration Value="Sweden Post" Position="75"  />
+                    <Enumeration Value="Telepen" Position="27"  />
+                    <Enumeration Value="TLC39" Position="70"  />
+                    <Enumeration Value="Trioptic" Position="71"  />
+                </Field>
+                <Field Name="Length" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Mask" Required="false" Type="String" Default="*" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="26" />
+                </Field>
+            </Group>
+            <!-- Barcode -->
+        </Group>
+        <!-- Multicode -->
+    </Group> <!-- Symbology Options -->
+    <!--                  -->
+    <!-- Scanner Settings -->
+    <!--                  -->
+    <Group Name="Scanner Settings">   <!-- \Scanners, Symbologies\Internal Scanner\Scanner Settings -->
+        <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="112" />
+        <Field Name="Scanner model" Required="false" Type="String" Editable="false" DeviceUnique="true"/>
+        <Field Name="Trigger modes version" Required="false" Type="Integer" Hidden="true" Editable="false" DeviceUnique="true"/>
+        <Field Name="Trigger predefined modes" Required="false" Type="Integer" Default="1">
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="." Value="255" Display="Show">
+                    <Enumeration Value="Toggle" Position="0"  />
+                    <Enumeration Value="Level" Position="1"  />
+                    <Enumeration Value="Aim" Position="2"  />
+                    <Enumeration Value="Custom" Position="255"  />
+                </DependsField>
+            </Depends>
+            <Enumeration Value="Toggle" Position="0"  />
+            <Enumeration Value="Level" Position="1"  />
+            <Enumeration Value="Aim" Position="2"  />
+        </Field>
+        <Field Name="Triggering mode" Required="false" Type="Integer" Default="1"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Enumeration Value="Level" Position="1"  />
+            <Enumeration Value="Toggle" Position="5"  />
+        </Field>
+        <Field Name="Enable aimer" Required="false" Type="Integer" Default="0" >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N" />
+            </Depends>
+            <Enumeration Value="Typical aimer" Position="0" />
+            <Enumeration Value="One pull aim then read" Position="1" />
+            <Enumeration Value="One pull aim, second pull read" Position="2" />
+        </Field>
+        <Field Name="Aimer timeout" Required="false" Type="Integer" Default="30"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Enumeration Value="5 seconds" Position="5"  />
+            <Enumeration Value="10 seconds" Position="10"  />
+            <Enumeration Value="15 seconds" Position="15"  />
+            <Enumeration Value="20 seconds" Position="20"  />
+            <Enumeration Value="30 seconds" Position="30"  />
+            <Enumeration Value="40 seconds" Position="40"  />
+            <Enumeration Value="50 seconds" Position="50"  />
+            <Enumeration Value="60 seconds" Position="60"  />
+        </Field>
+        <Field Name="Hardware trigger" Required="false" Type="Boolean" Default="1"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+        </Field>
+        <Field Name="T1 duration" Required="false" Type="Integer" Default="2"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="..\Triggering mode" Value="0" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="1" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="5" Display="Gray"/>
+            </Depends>
+            <Range Min="1" Max="4095" />
+        </Field>
+        <Field Name="Spotter beam duration" Required="false" Type="Integer" Default="500"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="..\Triggering mode" Value="0" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="3" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="6" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Enable aimer" Value="0" Display="Gray"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="..\Triggering mode" Value="5" />
+                <And/>
+                <DependsField Name="..\Enable aimer" Value="2" Display="Gray"/>
+            </Depends>
+            <Range Min="0" Max="2550" />
+        </Field>
+        <Field Name="Turn off after good read" Required="false" Type="Integer" Default="1"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="..\Triggering mode" Value="0" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="3" Display="Gray"/>
+                <Or/>
+                <DependsField Name="..\Triggering mode" Value="6" Display="Gray"/>
+            </Depends>
+            <Enumeration Value="Disable/Auto-Trigger" Position="0"  />
+            <Enumeration Value="Enable/One-shot" Position="1"  />
+        </Field>
+        <Field Name="Scanner firmware version" Type="String" Editable="false">
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="\xFF"/>
+            </Depends>
+        </Field>
+    </Group>
+    <!--                 -->
+	<!-- Imager Settings -->
+	<!--                 -->
+	<Group Name="Imager Settings"> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings -->
+	    <Field Name="Scanner model" Required="false" Type="String" Hidden="true" Editable="false" DeviceUnique="true"/>
+	    <Field Name="Camera Disabled" Required="false" Type="String" Hidden="true" Editable="false" DeviceUnique="true"/>
+        <Group Name="General">
+            <Field Name="Predefined Modes" Required="false" Type="Integer" Default="1" >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Depends Default="Show">
+                    <DependsField Name="." Value="255" Display="Show">
+                        <Enumeration Value="1D" Position="0"  />
+                        <Enumeration Value="1D and 2D standard" Position="1"  />
+                        <Enumeration Value="1D and 2D bright environment" Position="2"  />
+                        <Enumeration Value="1D and 2D reflective surface" Position="3"  />
+                        <Enumeration Value="Custom" Position="255"  />
+                    </DependsField>
+                </Depends>
+                <Enumeration Value="1D" Position="0"  />
+                <Enumeration Value="1D and 2D standard" Position="1"  />
+                <Enumeration Value="1D and 2D bright environment" Position="2"  />
+                <Enumeration Value="1D and 2D reflective surface" Position="3"  />
+            </Field>
+            <Group Name="Custom">
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="123" />
+                <Field Name="Sticky aimer LED duration" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="1D Omni-directional" Required="false" Type="Integer" Default="1" >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Linear imager emulation" Position="0"  />
+                    <Enumeration Value="2D imager" Position="1"  />
+                </Field>
+                <Field Name="Lighting mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Illumination LED priority" Position="0"  />
+                    <Enumeration Value="Aperture priority" Position="1"  />
+                </Field>
+                <Field Name="Lighting goal" Required="false" Type="Integer" Default="40"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="255" />
+                </Field>
+                <Field Name="Top position" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="390" />
+                </Field>
+                <Field Name="Bottom position" Required="false" Type="Integer" Default="479"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="400" Max="799" />
+                </Field>
+                <Field Name="Aimer LED duration" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65500" />
+                </Field>
+                <Field Name="Aimer Mode" Required="false" Type="Integer" Default="1"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Always on" Position="0"  />
+                    <Enumeration Value="Flashing (optimize for decode)" Position="1"  />
+                    <Enumeration Value="Always off" Position="2"  />
+                </Field>
+                <Field Name="Illumination Mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Always on" Position="0"  />
+                    <Enumeration Value="Power saving" Position="1"  />
+                </Field>
+                <Field Name="Illumination Level" Required="false" Type="Integer" Default="15"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="100" />
+                </Field>
+                <Field Name="1D Search Area" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Center" Position="0"  />
+                    <Enumeration Value="Upper half" Position="1"  />
+                    <Enumeration Value="Lower half" Position="2"  />
+                    <Enumeration Value="Full" Position="3"  />
+                    <Enumeration Value="Smart raster" Position="4"  />
+                </Field>
+                <Field Name="Horizontal Focus Factor" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Horizontal Focus Threshold" Required="false" Type="Integer" Default="30"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Vertical Focus Factor" Required="false" Type="Boolean" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                </Field>
+                <Field Name="Vertical Focus Threshold" Required="false" Type="Integer" Default="30"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="DPM mode" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+                <Field Name="Damaged 1D codes" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable" Position="1"  />
+                </Field>
+            </Group>
+        </Group>
+        <!--                 -->
+        <!-- File Properties -->
+        <!--                 -->
+        <Group Name="File Properties">
+            <Field Name="Image File Location" Required="false" Type="String" Default="\My Documents\MDI"  >
+                <Range Min="0" Max="200" />
+            </Field>
+            <Field Name="Folder Memory Limit" Required="false" Type="Integer" Default="13"  >
+                <Range Min="0" Max="64" />
+            </Field>
+            <Field Name="Enable tagging location data" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+        </Group>
+        <!--                       -->
+        <!-- Viewfinder Properties -->
+        <!--                       -->
+        <Group Name="Viewfinder Properties">
+            <Field Name="Enable viewfinder" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Focus mode" Required="false" Type="Integer" Default="2"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Autofocus - continuous" Position="1"  />
+                <Enumeration Value="Autofocus - single try" Position="2"  />
+                <Enumeration Value="Fixed focus - manual" Position="0"  />
+            </Field>
+            <Field Name="Manual focus value" Required="false" Type="Integer" Default="65"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Value="N" Display="Hide"/>
+                    <Or/>
+                    <DependsField Name="..\Focus mode" RelOp="NE" Value="0" Display="Gray"/>
+                </Depends>
+                <Range Min="0" Max="255" />
+            </Field>
+        </Group>
+        <!--              -->
+        <!-- Illumination -->
+        <!--              -->
+        <Group Name="Lighting">
+            <Field Name="Flash" Required="false" Type="Integer" Default="2"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Off" Position="0"  />
+                <Enumeration Value="On" Position="1"  />
+                <Enumeration Value="Auto" Position="2"  />
+            </Field>
+            <Field Name="Torch" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Off" Position="0"  />
+                <Enumeration Value="Auto" Position="1"  />
+            </Field>
+        </Group>
+        <!--                   -->
+		<!-- Signature Capture -->
+		<!--                   -->
+		<Field Name="Camera disabled by policy" Required="false" Type="String" Default="" Editable="false" HasValue="false">
+			<Depends Default="Hide">
+				<DependsField Name="..\Camera Disabled" Value="1" Display="Show" />
+			</Depends>
+		</Field>
+		<Group Name="Signature Capture">
+            <Depends Default="Show">
+                <DependsField Name="\Global\Model" Value="CK3G?" Display="Hide"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name=".\Scenario::0\Enable Scenario" Value="N" Display="Hide"/>
+                <And/>
+                <DependsField Name=".\Scenario::1\Enable Scenario" Value="N" Display="Hide"/>
+                <And/>
+                <DependsField Name=".\Scenario::2\Enable Scenario" Value="N" Display="Hide"/>
+                <And/>
+                <DependsField Name=".\Scenario::3\Enable Scenario" Value="N" Display="Hide"/>
+            </Depends>
+            <Depends Default="Show">
+                <DependsField Name="..\Camera Disabled" Value="1" Display="Hide" />
+            </Depends>
+            <Group Name="Scenario" MinOccurs="0" MaxOccurs="3" >
+                <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="118" >
+                    <Depends>
+                        <DependsField Name="." Display="Message" Value="118" Target="Defaults restored to all Signature Capture Scenarios" />
+                    </Depends>
+                </Field>
+                <Field Name="Enable Scenario" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Enable - bar code locator" Position="1"  />
+                    <Enumeration Value="Enable - framing pattern locator" Position="2"  />
+                </Field>
+                <Field Name="Bar Code Identifier" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="None" Position="0"  />
+                    <Enumeration Value="EAN 13" Position="1"  />
+                    <Enumeration Value="EAN 8" Position="2"  />
+                    <Enumeration Value="UPC A" Position="3"  />
+                    <Enumeration Value="UPC E" Position="4"  />
+                    <Enumeration Value="ITF" Position="15"  />
+                    <Enumeration Value="Code 128" Position="23"  />
+                    <Enumeration Value="Code 93" Position="25"  />
+                    <Enumeration Value="PDF 417" Position="33"  />
+                    <Enumeration Value="EAN 128" Position="34"  />
+                    <Enumeration Value="DataMatrix" Position="40"  />
+                    <Enumeration Value="QR Code" Position="41"  />
+                    <Enumeration Value="Maxicode" Position="42"  />
+                </Field>
+                <Field Name="Focus Check" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable (no focus check)" Position="0"  />
+                    <Enumeration Value="Medium (accept some blur)" Position="1"  />
+                    <Enumeration Value="High (accept little blur)" Position="2"  />
+                </Field>
+                <Field Name="Image Ratio Check" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="0" Position="0"  />
+                    <Enumeration Value="10%" Position="10"  />
+                    <Enumeration Value="20%" Position="20"  />
+                    <Enumeration Value="30%" Position="30"  />
+                    <Enumeration Value="40%" Position="40"  />
+                    <Enumeration Value="50%" Position="50"  />
+                    <Enumeration Value="60%" Position="60"  />
+                    <Enumeration Value="70%" Position="70"  />
+                    <Enumeration Value="80%" Position="80"  />
+                    <Enumeration Value="90%" Position="90"  />
+                    <Enumeration Value="100%" Position="100"  />
+                </Field>
+                <Field Name="Contrast Enhancement" Required="false" Type="Integer" Default="0"  >
+                    <Enumeration Value="None" Position="0"  />
+                    <Enumeration Value="Photo" Position="1"  />
+                    <Enumeration Value="Black on white" Position="2"  />
+                    <Enumeration Value="White on black" Position="3"  />
+                </Field>
+                <Field Name="Text Enhancement" Required="false" Type="Integer" Default="0"  >
+                    <Enumeration Value="None" Position="0"  />
+                    <Enumeration Value="Low" Position="1"  />
+                    <Enumeration Value="Medium" Position="2"  />
+                    <Enumeration Value="High" Position="3"  />
+                </Field>
+                <Field Name="Image Rotation" Required="false" Type="Integer" Default="0"  >
+                    <Enumeration Value="None" Position="0" />
+                    <Enumeration Value="90 degrees" Position="1" />
+                    <Enumeration Value="180 degrees" Position="2" />
+                    <Enumeration Value="270 degrees" Position="3" />
+                </Field>
+                <Field Name="Noise Reduction" Required="false" Type="Integer" Default="0"  >
+                    <Range Min="0" Max="9" />
+                </Field>
+                <Field Name="Anti-vignetting" Required="false" Type="Boolean" Default="0"  />
+                <Field Name="Brightness" Required="false" Type="Integer" Default="0"  >
+                    <Range Min="-100" Max="100" />
+                </Field>
+                <Field Name="Output Format" Required="false" Type="Integer" Default="0"  >
+                    <Enumeration Value="None" Position="0"  />
+                    <Enumeration Value="Monochrome" Position="1"  />
+                    <Enumeration Value="Enhanced monochrome (TIFF)" Position="2"  />
+                </Field>
+                <Field Name="Color Mode Brightness Threshold" Required="false" Type="Integer" Default="0"  >
+                    <Enumeration Value="Very dark" Position="0"  />
+                    <Enumeration Value="Dark" Position="1"  />
+                    <Enumeration Value="Normal" Position="2"  />
+                    <Enumeration Value="Bright" Position="3"  />
+                    <Enumeration Value="Very bright" Position="4"  />
+                </Field>
+                <Field Name="Output Compression" Required="false" Type="Integer" Default="1"  >
+                    <Enumeration Value="Bitmap" Position="0"  />
+                    <Enumeration Value="JPEG" Position="1"  />
+                    <Enumeration Value="TIFFG4" Position="2"  />
+                </Field>
+                <Field Name="Output Compression Quality" Required="false" Type="Integer" Default="60"  >
+                    <Depends Default="Show">
+                        <DependsField Name="..\Output Compression" Display="Gray" Value="0"/>
+                    </Depends>
+                    <Range Min="0" Max="100" />
+                </Field>
+                <Field Name="Projective Mapping Resolution" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Automatic" Position="1"  />
+                    <Enumeration Value="Fixed - 1 pixel" Position="2"  />
+                    <Enumeration Value="Fixed - 2 pixels" Position="3"  />
+                    <Enumeration Value="Fixed - 3 pixels" Position="4"  />
+                    <Enumeration Value="Fixed - 4 pixels" Position="5"  />
+                </Field>
+                <Field Name="Bar Code Length" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Bar Code Mask" Required="false" Type="String" Default=""  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="\xFF"/>
+                    </Depends>
+                    <Range Min="0" Max="26" />
+                </Field>
+                <Field Name="Automatic Correction" Required="false" Type="Integer" Default="3"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Enumeration Value="Disable" Position="0"  />
+                    <Enumeration Value="Horizontal only" Position="1"  />
+                    <Enumeration Value="Vertical only" Position="2"  />
+                    <Enumeration Value="Horizontal and vertical" Position="3"  />
+                </Field>
+                <Field Name="Horizontal Offset" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="-32767" Max="32767" />
+                </Field>
+                <Field Name="Vertical Offset" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="-32767" Max="32767" />
+                </Field>
+                <Field Name="Area Width" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Area Height" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Bar Code Width" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+                <Field Name="Bar Code Height" Required="false" Type="Integer" Default="0"  >
+                    <Depends Default="Show">
+                        <DependsField Name="." Display="Hide" Value="N"/>
+                        <Or/>
+                        <DependsField Name="..\Enable Scenario" Value="2" Display="Gray"/>
+                    </Depends>
+                    <Range Min="0" Max="65535" />
+                </Field>
+            </Group> 
+		</Group> 
+		<!--				  -->
+		<!-- Document Imaging -->
+		<!--				  -->
+		<Field Name="Camera disabled by policy" Required="false" Type="String" Default="" Editable="false" HasValue="false">
+			<Depends Default="Hide">
+				<DependsField Name="..\Camera Disabled" Value="1" Display="Show" />
+			</Depends>
+		</Field>
+		<Group Name="Document Imaging"> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings\Document Imaging -->
+            <Depends Default="Show">
+                <DependsField Name="Enable Document Imaging" Display="Hide" Value="N"/>
+            </Depends> 
+            <Depends Default="Show">
+        		<DependsField Name="..\Camera Disabled" Value="1" Display="Hide" />
+			</Depends>
+            <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="119" />
+            <Field Name="Enable Document Imaging" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Disable" Position="0"  />
+                <Enumeration Value="Enable without decode" Position="2"  />
+            </Field>
+            <Field Name="Focus Check" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Disable" Position="0"  />
+                <Enumeration Value="Medium level" Position="1"  />
+                <Enumeration Value="High level" Position="2"  />
+            </Field>
+            <Field Name="Image/Area to Capture Ratio" Required="false" Type="Integer" Default="30"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="10" Max="85" />
+            </Field>
+            <Field Name="Output Compression" Required="false" Type="Integer" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Bitmap" Position="0"  />
+                <Enumeration Value="JPEG" Position="1"  />
+                <Enumeration Value="TIFFG4" Position="2"  />
+            </Field>
+            <Field Name="Output Compression Quality" Required="false" Type="Integer" Default="60"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Depends Default="Show">
+                    <DependsField Name="..\Output Compression" Display="Gray" Value="0"/>
+                </Depends>
+                <Range Min="0" Max="100" />
+            </Field>
+            <Field Name="Perspective Correction" Required="false" Type="Boolean" Default="1"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Output Format" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0"  />
+                <Enumeration Value="Monochrome" Position="1"  />
+                <Enumeration Value="Enhanced monochrome (TIFF)" Position="2"  />
+            </Field>
+            <Field Name="Color Mode Brightness Threshold" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Very dark" Position="0"  />
+                <Enumeration Value="Dark" Position="1"  />
+                <Enumeration Value="Normal" Position="2"  />
+                <Enumeration Value="Bright" Position="3"  />
+                <Enumeration Value="Very bright" Position="4"  />
+            </Field>
+            <Field Name="Contrast Enhancement" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0"  />
+                <Enumeration Value="Photo" Position="1"  />
+                <Enumeration Value="Black on white" Position="2"  />
+                <Enumeration Value="White on black" Position="3"  />
+            </Field>
+            <Field Name="Text Enhancement" Required="false" Type="Integer" Default="2"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0"  />
+                <Enumeration Value="Low" Position="1"  />
+                <Enumeration Value="Medium" Position="2"  />
+                <Enumeration Value="High" Position="3"  />
+            </Field>
+            <Field Name="Noise Reduction" Required="false" Type="Integer" Default="3"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="0" Max="9" />
+            </Field>
+            <Field Name="Image Rotation" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0" />
+                <Enumeration Value="90 degrees" Position="1" />
+                <Enumeration Value="180 degrees" Position="2" />
+                <Enumeration Value="270 degrees" Position="3" />
+            </Field>
+            <Field Name="Anti-vignetting" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+            <Field Name="Brightness" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Hide"/>
+                <Range Min="-100" Max="100" />
+            </Field>
+            <Field Name="Contrast" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Hide"/>
+                <Range Min="-100" Max="100" />
+            </Field>
+            <Field Name="Document File Name" Required="false" Type="String" Default="doc_$(num)"  >
+                <Range Min="0" Max="200" />
+            </Field>
+        </Group> <!-- Document Imaging --> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings\Document Imaging -->
+        <!--				  -->
+        <!-- Image Capture -->
+        <!--				  -->
+        <Field Name="Camera disabled by policy" Required="false" Type="String" Default="" Editable="false" HasValue="false">
+            <Depends Default="Hide">
+                <DependsField Name="..\Camera Disabled" Value="1" Display="Show" />
+            </Depends>
+        </Field>
+        <Group Name="Image Capture"> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings\Image Capture -->
+            <Depends Default="Show">
+                <DependsField Name="Image conditioning" Display="Hide" Value="\xFF"/>
+            </Depends>
+            <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="106" />
+            <Field Name="Image conditioning" Required="false" Type="String" Hidden="true" Editable="false"/>
+            <Field Name="Output Compression" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="Bitmap" Position="0"  />
+                <Enumeration Value="JPEG" Position="1"  />
+                <Enumeration Value="TIFFG4" Position="2"  />
+            </Field>
+            <Field Name="Output Compression Quality" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Depends Default="Show">
+                    <DependsField Name="..\Output Compression" Display="Gray" Value="0"/>
+                </Depends>
+                <Range Min="0" Max="100" />
+            </Field>
+            <Field Name="Text Enhancement" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0"  />
+                <Enumeration Value="Low" Position="1"  />
+                <Enumeration Value="Medium" Position="2"  />
+                <Enumeration Value="High" Position="3"  />
+            </Field>
+            <Field Name="Noise Reduction" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Range Min="0" Max="9" />
+            </Field>
+            <Field Name="Subsampling" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0"  />
+                <Enumeration Value="1 pixel out of 2" Position="1"  />
+                <Enumeration Value="1 pixel out of 3" Position="2"  />
+                <Enumeration Value="1 pixel out of 4" Position="3"  />
+                <Enumeration Value="1 pixel out of 5" Position="4"  />
+                <Enumeration Value="1 pixel out of 6" Position="5"  />
+                <Enumeration Value="1 pixel out of 7" Position="6"  />
+                <Enumeration Value="1 pixel out of 8" Position="7"  />
+            </Field>
+            <Field Name="Image Rotation" Required="false" Type="Integer" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+                <Enumeration Value="None" Position="0" />
+                <Enumeration Value="90 degrees" Position="1" />
+                <Enumeration Value="180 degrees" Position="2" />
+                <Enumeration Value="270 degrees" Position="3" />
+            </Field>
+            <Field Name="Anti-vignetting" Required="false" Type="Boolean" Default="0"  >
+                <Depends Default="Show">
+                    <DependsField Name="." Display="Hide" Value="N"/>
+                </Depends>
+            </Field>
+        </Group> <!-- Document Imaging --> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings\Image Capture -->
+    </Group> <!-- Imager Settings --> <!-- \Scanners, Symbologies\Internal Scanner\Imager Settings -->
+    <!--                 -->
+    <!-- Decode Security -->
+    <!--                 -->
+    <Group Name="Decode Security"> <!-- \Scanners, Symbologies\Internal Scanner\Decode Security -->
+        <Field Name="Restore factory defaults" Required="false" Type="Integer" Hidden="true" Default="113" />
+        <Field Name="Consecutive data validation" Required="false" Type="Integer" Default="0"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Range Min="0" Max="10" />
+        </Field>
+        <Field Name="Identical consecutive timeout" Required="false" Type="Integer" Default="300"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Range Min="0" Max="2550" />
+        </Field>
+        <Field Name="Diff consecutive timeout" Required="false" Type="Integer" Default="0"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Range Min="0" Max="2550" />
+        </Field>
+        <Field Name="Center Decoding" Required="false" Type="Integer" Default="0"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Enumeration Value="Disable" Position="0"  />
+            <Enumeration Value="Enable" Position="1"  />
+        </Field>
+        <Field Name="Center Decoding Tolerance" Required="false" Type="Integer" Default="0"  >
+            <Depends Default="Show">
+                <DependsField Name="." Display="Hide" Value="N"/>
+            </Depends>
+            <Range Min="0" Max="100" />
+        </Field>
+    </Group>
+</Group>

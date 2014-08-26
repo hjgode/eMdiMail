@@ -1,0 +1,367 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>MDIhelp</title></head>
+<body>
+
+<h1><a name="start"></a>MDI Demo Help 1.0</h1>
+
+<ul id="mozToc"><!--mozToc h2 1--><li><a href="#mozTocId58991">Brightness</a></li><li><a href="#mozTocId278938">Captured Document Location</a></li><li><a href="#mozTocId774552">ColorMode</a></li><li><a href="#mozTocId821680">ColorMode Brightness Threshold</a></li><li><a href="#mozTocId886309">Contrast Enhancement</a></li><li><a href="#mozTocId9570">Captured Document Location</a></li><li><a href="#mozTocId872279">File Name Template</a></li><li><a href="#mozTocId437999">FocusCheck</a></li><li><a href="#mozTocId11031">Image Area Capture Ratio</a></li><li><a href="#mozTocId880049">Image Lighting Correction</a></li><li><a href="#mozTocId525206">Image Rotation</a></li><li><a href="#mozTocId853997">Perspective Correction</a></li><li><a href="#mozTocId425825">Noise Reduction</a></li><li><a href="#mozTocId902465">Output Compression</a></li><li><a href="#mozTocId765464">Output Compression Quality</a></li><li><a href="#mozTocId97515">Text Enhancement</a></li></ul><div align="right">[<a href="#start">TOP</a>]
+</div><h2><a class="mozTocH2" name="mozTocId58991"></a>Brightness</h2>
+
+<p class="BodyTextVerdana">Lightens or darkens the image.</p>
+
+<ul>
+
+<li>Range is<span class="hcp1">&nbsp;&nbsp;&nbsp;</span>-100
+
+to 100, where -100 is darkest and 100 is lightest.</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId278938"></a>Captured Document Location</h2>
+
+<p class="BodyTextVerdana">Path to the folder where
+
+captured single images are stored. The default folder on the computer
+
+is "\My Documents\MDI". If a path is not specified, it is created.</p>
+
+<ul>
+
+<li>Valid characters are ASCII characters 32 through 126
+
+(decimal). Invalid characters are /:*?"&lt;&gt;|.</li>
+
+</ul>
+
+<ul>
+
+<li>The string begins with a backslash, and cannot end with a
+
+backslash except for the &#8220;\&#8221; string (root folder).</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId774552"></a><a name="ColorMode"></a>ColorMode</h2>
+
+<ul>
+
+<li>None - sets color mode to grayscale</li>
+
+<li>Monochrome_Normal - sets color mode to black and white
+
+without interpolation</li>
+
+<li>Monochrome_Enhanced_TIFF_Quality - sets color mode to black
+
+and white with interpolation</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId821680"></a>ColorMode Brightness Threshold</h2>
+
+When ColorMode is set to monochrome, determines overall brightness of
+
+image by determining the general level at which pixels are converted
+
+from greyscale to black or white. Sets the relative level at which
+
+grayscale pixels are converted to black or white when <a href="#ColorMode">ColorMode</a> is set to Monochrome.
+
+<ul>
+
+<li>VeryDark - Only the lightest pixels are converted to white.
+
+Results in a generally darker image.</li>
+
+<li>Dark</li>
+
+<li>Normal</li>
+
+<li>Bright</li>
+
+<li>VeryBright - Only the darkest pixels are converted to
+
+black. Results in a generally lighter image.</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId886309"></a>Contrast Enhancement</h2>
+
+Controls whether the image contrast is enhanced. Adjusts brightness and
+
+contrast automatically when used.<br>
+
+<ul>
+
+<li>None</li>
+
+<li>Photo</li>
+
+<li>Black_text_on_white_background</li>
+
+<li>White_text_on_black_background</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId9570"></a>Captured Document Location</h2>
+
+<p class="BodyTextVerdana">Path to the folder where
+
+captured single images are stored. The default folder on the computer
+
+is "\My Documents\MDI". If a path is not specified, it is created. </p>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId872279"></a>File Name Template</h2>
+
+<p class="BodyTextVerdana">Defines the default file name.
+
+The total length of the folder location, file name, and file extension
+
+string cannot exceed 200 characters (location + file name + max.
+
+4-character file extension).</p>
+
+<p class="BodyTextVerdana">You can specify the file name
+
+to consist of one or more of the following static fields: </p>
+
+<ul>
+
+<li>Time/Date stamp $(<span class="">time), in the
+
+format YYYY-MM-DD HH_MM_SS. For example, if you set the file name to
+
+&#8220;myFile_$(time)&#8221;, the captured file name would be similar to
+
+&#8216;myFile_2009-02-11 16_23_26.jpg&#8221;, which is 2/11/2009 4:23:26 pm for
+
+GTM-8 Pacific US time. </span></li>
+
+<li>Document number $(num), which is an automatically
+
+incremented number for every file stored. For example, if you set the
+
+file name to &#8220;myFile_$(num)&#8221;, the first two file <span class="hcp1">&nbsp;&nbsp;&nbsp;</span>names
+
+would be &#8220;myFile_1.jpg&#8221; or <span class="hcp1">&nbsp;&nbsp;&nbsp;</span>&#8220;myFile_2.jpg&#8221;.
+
+</li>
+
+<li>Location $(location), which is GPS information. If a
+
+location service is not available, then the text of $(location) is
+
+&#8220;no_location&#8221;.
+
+</li>
+
+<li><span class="">Default static field is the
+
+root file name which is &#8220;doc_$(num)&#8221;, where num is an automatically
+
+incremented number. For example, if you use the default file location
+
+and file nam</span>e on a handheld computer, the file path is
+
+similar to &#8220;\My Document\MDI\doc_1.jpg&#8221;.</li>
+
+</ul>
+
+<p style="margin-left: 40px;" class="BulletListNoBullet">If
+
+you do not specify the static field with a file name, the computer
+
+generates a random number in order to set a unique file name for a
+
+captured document file. For example, if you set the file name to
+
+&#8220;myFile&#8221;, the second generated file name is similar to
+
+&#8220;myFile_143553.jpg&#8221;, where 143553 is a random number generated by the
+
+computer. </p>
+
+<p style="margin-left: 40px;" class="BodyTextVerdana">Remarks<br>
+
+Valid characters are ASCII character numbers 32 to 126 (decimal).
+
+Invalid characters are \/:*?"&lt;&gt;|</p>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId437999"></a>FocusCheck</h2>
+
+<p class="BodyTextVerdana">Controls whether the image
+
+focus is evaluated as part of determining if there is a valid document
+
+to capture.<br>
+
+This setting is useful in preventing blurred document captures. The
+
+focus check is performed on the document center.</p>
+
+<ul>
+
+<li>Disable</li>
+
+<li>Medium</li>
+
+<li>High</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId11031"></a>Image Area Capture Ratio</h2>
+
+<p class="BodyTextVerdana">Controls how far away from the
+
+document page <span class="hcp1">&nbsp;</span>the
+
+capture can be taken. The further away the capture is taken, the
+
+smaller the page looks and the ratio of page relative to the overall
+
+image is smaller.</p>
+
+<ul>
+
+<li>The value is expressed as a percentage with a range of 0 to
+
+100, where the higher the value, the larger the page appears in the
+
+image. </li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId880049"></a>Image Lighting Correction</h2>
+
+<p class="BodyTextVerdana">Controls the image lighting
+
+correction. Enable this to correct for non-uniform lighting conditions.</p>
+
+<ul>
+
+<li>None</li>
+
+<li>Enabled</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId525206"></a>Image Rotation</h2>
+
+<p class="BodyTextVerdana">Rotates the image
+
+counterclockwise from its original position by the specified amount.</p>
+
+<ul>
+
+<li>None</li>
+
+<li>Degrees_90</li>
+
+<li>Degrees_180</li>
+
+<li>Degrees_270</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId853997"></a>Perspective Correction</h2>
+
+<p class="BodyTextVerdana">Controls whether or not
+
+perspective correction is used. </p>
+
+<ul>
+
+<li>When correction is disabled, there is no projective
+
+mapping, and the system returns the smallest rectangle image containing
+
+the area to be captured. When correction is enabled, projective mapping
+
+is active and the resolution used is automatically adjusted. </li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId425825"></a>Noise Reduction</h2>
+
+<p class="BodyTextVerdana">Filters out video noise. This
+
+setting helps reduce the noise resulting from the edge enhancement
+
+process. If set to 0, this filtering stage is disabled. The higher the
+
+setting value, the higher the filtering.</p>
+
+<ul>
+
+<li>Range is 0 to 9</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId902465"></a>Output Compression</h2>
+
+<p class="BodyTextVerdana">Sets the output file type of
+
+the document capture image.</p>
+
+<ul>
+
+<li>Bitmap</li>
+
+<li>Jpeg</li>
+
+<li>TIFF</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId765464"></a>Output Compression Quality</h2>
+
+Controls the JPEG compression level for the captured image, expressed
+
+as a percentage with a range of 0 to 100.
+
+<ul>
+
+<li>Range is 0 to 100, where 100 is highest quality and largest
+
+file size.</li>
+
+</ul>
+
+<div style="text-align: right;">[<a href="#start">TOP</a>]</div>
+<h2><a class="mozTocH2" name="mozTocId97515"></a>Text Enhancement</h2>
+
+<p class="BodyTextVerdana">Enables text enhancement, which
+
+controls the readability of text in the image.</p>
+
+<ul>
+
+<li>None</li>
+
+<li>Low</li>
+
+<li>Medium</li>
+
+<li>High</li>
+
+</ul>
+
+<p class="BodyTextVerdana"></p>
+
+</body></html>
